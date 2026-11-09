@@ -104,4 +104,33 @@ def test_dictionary_get():
         fruits_dictionary['pineapple']
 
 
+def test_dictionary_pop_and_update():
+    """Dictionary pop() and update() methods"""
+
+    fruits_dictionary = {
+        'cherry': 'red',
+        'apple': 'green',
+        'banana': 'yellow',
+    }
+
+    # The pop() method removes a key and returns its value.
+    assert fruits_dictionary.pop('banana') == 'yellow'
+    assert 'banana' not in fruits_dictionary
+    assert list(fruits_dictionary) == ['cherry', 'apple']
+
+    # The update() method merges another dictionary and adds new keys.
+    fruits_dictionary.update({'pineapple': 'yellow'})
+    assert fruits_dictionary['pineapple'] == 'yellow'
+
+    # The update() method overwrites the value of an existing key.
+    fruits_dictionary.update({'apple': 'red'})
+    assert fruits_dictionary['apple'] == 'red'
+
+    # The final dictionary has exactly the expected keys and values.
+    assert fruits_dictionary == {
+        'cherry': 'red',
+        'apple': 'red',
+        'pineapple': 'yellow',
+    }
+
 
