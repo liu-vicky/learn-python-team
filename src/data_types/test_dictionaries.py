@@ -20,6 +20,8 @@ Placing a comma-separated list of key:value pairs within the braces adds initial
 to the dictionary; this is also the way dictionaries are written on output.
 """
 
+import pytest
+
 
 def test_dictionary():
     """Dictionary"""
@@ -77,3 +79,58 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+
+def test_dictionary_get():
+    """Dictionary get() method"""
+
+    fruits_dictionary = {
+        'cherry': 'red',
+        'apple': 'green',
+        'banana': 'yellow',
+    }
+
+    # The get() method returns the value for an existing key.
+    assert fruits_dictionary.get('apple') == 'green'
+
+    # The get() method accepts a default value that is returned when the key is missing.
+    assert fruits_dictionary.get('pineapple', 'unknown') == 'unknown'
+
+    # Without a default value, get() returns None for a missing key instead of raising an error.
+    assert fruits_dictionary.get('pineapple') is None
+
+    # Reading a missing key with [] raises a KeyError.
+    with pytest.raises(KeyError):
+        fruits_dictionary['pineapple']
+
+
+def test_dictionary_pop_and_update():
+    """Dictionary pop() and update() methods"""
+
+    fruits_dictionary = {
+        'cherry': 'red',
+        'apple': 'green',
+        'banana': 'yellow',
+    }
+
+    # The pop() method removes a key and returns its value.
+    assert fruits_dictionary.pop('banana') == 'yellow'
+    assert 'banana' not in fruits_dictionary
+    assert list(fruits_dictionary) == ['cherry', 'apple']
+
+    # The update() method merges another dictionary and adds new keys.
+    fruits_dictionary.update({'pineapple': 'yellow'})
+    assert fruits_dictionary['pineapple'] == 'yellow'
+
+    # The update() method overwrites the value of an existing key.
+    fruits_dictionary.update({'apple': 'red'})
+    assert fruits_dictionary['apple'] == 'red'
+
+    # The final dictionary has exactly the expected keys and values.
+    assert fruits_dictionary == {
+        'cherry': 'red',
+        'apple': 'red',
+        'pineapple': 'yellow',
+    }
+
+
