@@ -13,6 +13,43 @@ the same type.
 
 import pytest
 
+# NEW CODE BELOW ===============================================================================
+
+# NEW SMALL AND MEANINGFUL CHANGE #1
+# newly added code that will sort a list based on string length
+def test_sort_by_length():
+    """Sort strings by length using a custom key."""
+
+    words = ['banana', 'kiwi', 'apple', 'fig']
+
+    # sort words from shortest to longest
+    sorted_words = sorted(words, key=len)
+
+    assert sorted_words == ['fig', 'kiwi', 'apple', 'banana']
+
+    # sorted() should not modify the original list
+    assert words == ['banana', 'kiwi', 'apple', 'fig']
+
+# NEW SMALL AND MEANINGFUL CHANGE #2
+# newly added code that will show how to select every second element and reverse a list through slicing
+def test_list_slicing_with_step():
+    """Demonstrates slicing with a step and reversing a list."""
+
+    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # select every second element
+    every_second = numbers[::2]
+    assert every_second == [0, 2, 4, 6, 8]
+
+    # reverse the list using slicing
+    reversed_numbers = numbers[::-1]
+    assert reversed_numbers == [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+
+    # select every second element starting from index 1
+    odd_positions = numbers[1::2]
+    assert odd_positions == [1, 3, 5, 7, 9]
+
+# OLD CODE BELOW ===============================================================================
 
 def test_list_type():
     """List type."""
