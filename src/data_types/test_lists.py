@@ -300,7 +300,7 @@ def test_list_comprehensions():
 
     # Call a method on each element.
     fresh_fruit = ['  banana', '  loganberry ', 'passion fruit  ']
-    clean_fresh_fruit = [weapon.strip() for weapon in fresh_fruit]
+    clean_fresh_fruit = [item.strip() for item in fresh_fruit]
     assert clean_fresh_fruit == ['banana', 'loganberry', 'passion fruit']
 
     # Create a list of 2-tuples like (number, square).
